@@ -1,7 +1,7 @@
 mkdir build
 chdir build
 
-cmake -G "NMake Makefiles" -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% %SRC_DIR%
+cmake -G "NMake Makefiles" -DFAST_BUILD=ON -DCMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% %SRC_DIR%
 if errorlevel 1 exit 1
 
 nmake
