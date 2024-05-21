@@ -1,11 +1,13 @@
-mkdir build
-chdir build
+echo Start
+echo %PREFIX%/build
+mkdir %PREFIX%/build
+chdir %PREFIX%/build
+echo Folders created
 
-cmake -G "NMake Makefiles" -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% %SRC_DIR%
+cmake -S %SRC_DIR% -B %PREFIX%/build
 if errorlevel 1 exit 1
+echo Files created
 
-nmake
+cmake --install %PREFIX%/build
 if errorlevel 1 exit 1
-
-nmake install
-if errorlevel 1 exit 1
+echo installation complete
