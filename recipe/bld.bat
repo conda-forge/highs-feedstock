@@ -1,11 +1,11 @@
 mkdir build
 chdir build
 
-cmake -G "NMake Makefiles" -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% %SRC_DIR%
+cmake -S . -B build
 if errorlevel 1 exit 1
 
-nmake
+ctest
 if errorlevel 1 exit 1
 
-nmake install
+cmake --install build
 if errorlevel 1 exit 1
