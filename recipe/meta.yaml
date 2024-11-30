@@ -16,18 +16,18 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - cmake >=3.15
-    - make  # [unix]
+    - ninja  # [win]
+    - make  # [not win]
     - {{ stdlib("c") }}
-  run:
-    # Should be limited to python >=3.8 but is not allowed
-    - python
-    - numpy
 
 test:
+  source_files:
+    - check/instances/afiro.mps
   commands:
     - test -f ${PREFIX}/include/highs/Highs.h  # [unix]
     - test -f ${PREFIX}/lib/libhighs.so  # [linux]
     - if not exist %LIBRARY_PREFIX%\include\highs\Highs.h (exit 1)  # [win]
+    - highs check/instances/afiro.mps
 
 about:
   home: https://github.com/ERGO-Code/HiGHS
