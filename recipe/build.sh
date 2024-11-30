@@ -8,5 +8,7 @@ cmake ${CMAKE_ARGS} \
 cmake --build build --config Release
 cmake --install build --config Release
 
-cd build
-ctest
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
+  cd build
+  ctest -C Release
+fi
