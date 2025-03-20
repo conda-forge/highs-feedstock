@@ -192,8 +192,6 @@ Feedstock Maintainers
 
 * [@DerThorsten](https://github.com/DerThorsten/)
 * [@adament](https://github.com/adament/)
+* [@galabovaa](https://github.com/galabovaa/)
 * [@julian-belina](https://github.com/julian-belina/)
-
-
-<!-- dummy commit to enable rerendering -->
 
