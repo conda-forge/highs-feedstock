@@ -1,5 +1,6 @@
 {% set name = "HiGHS" %}
 {% set version = "1.10.0" %}
+{% set python_min = "3.8" %}
 
 package:
   name: {{ name|lower }}
@@ -19,6 +20,9 @@ requirements:
     - ninja  # [win]
     - make  # [not win]
     - {{ stdlib("c") }}
+  run:
+    - python >={{ python_min }}
+    - numpy
 
 test:
   source_files:
