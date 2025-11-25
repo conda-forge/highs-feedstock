@@ -24,7 +24,7 @@ requirements:
       else: make
     - ${{ stdlib("c") }}
   run_exports:
-    - ${{ pin_subpackage('highs', max_pin='x.x') }}
+    - ${{ pin_subpackage('highs', upper_bound='x.x') }}
 
 tests:
   - files:
