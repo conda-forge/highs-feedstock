@@ -13,7 +13,7 @@ source:
   sha256: cd0daddaca57e66b55524588d715dc62dcee06b5ab9ad186412dc23bc71ae342
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -23,6 +23,8 @@ requirements:
       then: ninja
       else: make
     - ${{ stdlib("c") }}
+  run_exports:
+    - ${{ pin_subpackage('highs', max_pin='x.x') }}
 
 tests:
   - files:
