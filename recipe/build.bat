@@ -4,15 +4,12 @@ cmake -G "Ninja" ^
       -DCMAKE_BUILD_TYPE=Release ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
       -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
+      -DCMAKE_UNITY_BUILD=ON ^
       -S %SRC_DIR% -B build
 if errorlevel 1 exit 1
 
-cmake --build build
+cmake --build build --target install
 if errorlevel 1 exit 1
 
-cmake --install build
-if errorlevel 1 exit 1
-
-chdir build
-ctest
+ctest --test-dir build
 if errorlevel 1 exit 1
