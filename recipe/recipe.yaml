@@ -13,7 +13,7 @@ source:
   sha256: a840d269dff2fafb371dd247df13ad5e026d7ce3b35ad3dc1eedd59bf0c2fb16
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -27,16 +27,15 @@ requirements:
     - ${{ pin_subpackage('highs', upper_bound='x.x') }}
 
 tests:
+  - package_contents:
+      include:
+        - highs/Highs.h
+      lib:
+        - highs
   - files:
       source:
         - check/instances/afiro.mps
     script:
-      - if: unix
-        then: test -f ${PREFIX}/include/highs/Highs.h
-      - if: linux
-        then: test -f ${PREFIX}/lib/libhighs.so
-      - if: win
-        then: if not exist %LIBRARY_PREFIX%\include\highs\Highs.h (exit 1)
       - highs check/instances/afiro.mps
 
 about:
@@ -53,5 +52,6 @@ extra:
   recipe-maintainers:
     - galabovaa
     - adament
+    - jschueller
     - julian-belina
     - DerThorsten
